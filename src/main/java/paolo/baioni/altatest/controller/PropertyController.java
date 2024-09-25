@@ -16,6 +16,7 @@ import paolo.baioni.altatest.model.locomotion.Point;
 import paolo.baioni.altatest.model.locomotion.PointType;
 import paolo.baioni.altatest.model.vehicle.VehicleType;
 import paolo.baioni.altatest.service.PropertyService;
+import paolo.baioni.altatest.service.exception.DuplicateIdException;
 import paolo.baioni.altatest.service.exception.WrongDestinationException;
 import paolo.baioni.altatest.utils.MapUtils;
 
@@ -34,7 +35,7 @@ public class PropertyController {
 	//for a simple case like this app, I would prefer the plain String
 	
 	@PostMapping("/addVehicle")
-	public ResponseEntity<Boolean> addVehicle(@RequestParam String id, @RequestParam String vehicleType){
+	public ResponseEntity<Boolean> addVehicle(@RequestParam String id, @RequestParam String vehicleType) throws DuplicateIdException{
 		return new ResponseEntity<Boolean>(propertyService.addVehicle(id, VehicleType.valueOf(vehicleType.toLowerCase())), HttpStatus.OK);
 	}
 	

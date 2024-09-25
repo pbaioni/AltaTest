@@ -24,6 +24,7 @@ import paolo.baioni.altatest.model.vehicle.VehicleType;
 import paolo.baioni.altatest.repository.Farm;
 import paolo.baioni.altatest.repository.Hangar;
 import paolo.baioni.altatest.service.PropertyService;
+import paolo.baioni.altatest.service.exception.DuplicateIdException;
 import paolo.baioni.altatest.service.exception.WrongDestinationException;
 import paolo.baioni.altatest.utils.MapUtils;
 
@@ -40,7 +41,7 @@ public class PropertyServiceImpl implements PropertyService {
 	}
 
 	@Override
-	public boolean addVehicle(String id, VehicleType type) {
+	public boolean addVehicle(String id, VehicleType type) throws DuplicateIdException {
 		switch (type) {
 		case Aircraft:
 			return hangar.addAirportVehicle(new Aircraft(id, MapUtils.airportPoint));

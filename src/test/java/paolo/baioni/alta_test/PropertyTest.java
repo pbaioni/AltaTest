@@ -1,6 +1,7 @@
 package paolo.baioni.alta_test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 import java.io.FileNotFoundException;
@@ -16,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import paolo.baioni.altatest.AltaTestApplication;
 import paolo.baioni.altatest.model.vehicle.VehicleType;
 import paolo.baioni.altatest.service.PropertyService;
+import paolo.baioni.altatest.service.exception.DuplicateIdException;
 
 
 @SpringBootTest(classes = AltaTestApplication.class)
@@ -26,7 +28,7 @@ public class PropertyTest {
 	private PropertyService propertyService;
 	
 	@BeforeAll
-	public void init() {
+	public void init()  throws DuplicateIdException {
 		propertyService.addAnimal("dog");
 		propertyService.addAnimal("dog");
 		propertyService.addAnimal("duck");
@@ -68,7 +70,7 @@ public class PropertyTest {
 	}
 	
 	@Test
-	public void testAddAndRemoveVehicle() {
+	public void testAddAndRemoveVehicle() throws DuplicateIdException {
 		assertTrue(propertyService.addVehicle("seaplane1234", VehicleType.Seaplane));
 		assertTrue(propertyService.removeVehicle("seaplane1234"));
 	}
@@ -84,6 +86,12 @@ public class PropertyTest {
 		assertTrue(propertyService.countVehiclesBySection("airport").equals(4));
 		assertTrue(propertyService.countVehiclesBySection("harbour").equals(6));
 		assertTrue(propertyService.countVehiclesBySection("garage").equals(4));
+
+	}
+	
+	@Test
+	public void testDuplicatedId() throws DuplicateIdException{
+		assertThrows(DuplicateIdException.class, () -> propertyService.addVehicle("airForceOne", VehicleType.Aircraft));
 
 	}
 	

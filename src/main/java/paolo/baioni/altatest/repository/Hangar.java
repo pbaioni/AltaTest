@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.stereotype.Repository;
 
 import paolo.baioni.altatest.model.vehicle.AbstractVehicle;
+import paolo.baioni.altatest.service.exception.DuplicateIdException;
 
 @Repository
 public class Hangar {
@@ -20,18 +21,33 @@ public class Hangar {
 		this.garageVehicles = new ArrayList<AbstractVehicle>();
 	}
 
-	public boolean addAirportVehicle(AbstractVehicle airportVehicle) {
+	public boolean addAirportVehicle(AbstractVehicle airportVehicle) throws DuplicateIdException {
+		if(checkNotDoubleId(airportVehicle.getId())) {
 		return this.airportVehicles.add(airportVehicle);
+		}else {
+			throw new DuplicateIdException();
+		}
 	}
 
-	public boolean addHarbourVehicle(AbstractVehicle harbourVehicle) {
+	public boolean addHarbourVehicle(AbstractVehicle harbourVehicle) throws DuplicateIdException {
 		return this.harbourVehicles.add(harbourVehicle);
 	}
 
-	public boolean addGarageVehicle(AbstractVehicle garageVehicle) {
+	public boolean addGarageVehicle(AbstractVehicle garageVehicle) throws DuplicateIdException {
 		return this.garageVehicles.add(garageVehicle);
 	}
 
+	private boolean checkNotDoubleId(String id) {
+		boolean rval = true;
+		for(AbstractVehicle vehicle : getAllVehicles()) {
+			if(vehicle.getId().equals(id)) {
+				rval = false;
+				continue;
+			}
+		}
+		return rval;
+	}
+	
 	public boolean removeVehicleById(String id) {
 		boolean rval = true;
 		if (!airportVehicles.removeIf(v -> v.getId().equals(id))) {

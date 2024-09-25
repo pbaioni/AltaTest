@@ -5,11 +5,12 @@ import java.io.IOException;
 import paolo.baioni.altatest.model.locomotion.Locomotion;
 import paolo.baioni.altatest.model.locomotion.Point;
 import paolo.baioni.altatest.model.vehicle.VehicleType;
+import paolo.baioni.altatest.service.exception.DuplicateIdException;
 import paolo.baioni.altatest.service.exception.WrongDestinationException;
 
 public interface PropertyService {
 	
-	public boolean addVehicle(String id, VehicleType vehicleType);
+	public boolean addVehicle(String id, VehicleType vehicleType) throws DuplicateIdException;
 	public boolean addAnimal(String animalType);
 	
 	public boolean removeVehicle(String id);
