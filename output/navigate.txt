@@ -1,0 +1,16 @@
+Here follows the list of animals and vehicles capable of navigate locomotion:
+
+Dog
+Dog
+Duck
+Duck
+WaterAnimal
+WaterAnimal
+WaterAnimal
+
+Boat id=boat1, position=x=30, y=35, type=HARBOUR
+Boat id=boat2, position=x=30, y=35, type=HARBOUR
+JetSki id=jetski1, position=x=50, y=50, type=WATER
+JetSki id=jetski2, position=x=30, y=35, type=HARBOUR
+Seaplane id=seaplane1, position=x=30, y=35, type=HARBOUR
+Seaplane id=seaplane2, position=x=30, y=35, type=HARBOUR

@@ -1,5 +1,7 @@
 package paolo.baioni.altatest.model.locomotion;
 
+import java.util.Objects;
+
 public class Point {
 	private final int x;
 	private final int y;
@@ -21,6 +23,23 @@ public class Point {
 
 	public PointType getPointType() {
 		return pointType;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(pointType, x, y);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Point other = (Point) obj;
+		return pointType == other.pointType && x == other.x && y == other.y;
 	}
 
 	@Override

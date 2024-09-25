@@ -13,4 +13,13 @@ public class AbstractAnimal {
 		this.locomotions = new ArrayList<Locomotion>();
 	}
 
+	public Collection<Locomotion> getLocomotions() {
+		return locomotions;
+	}
+
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName();
+	}
+
 }

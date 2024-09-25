@@ -1,0 +1,12 @@
+Here follows the list of animals and vehicles capable of fly locomotion:
+
+Duck
+Duck
+Eagle
+
+Aircraft id=airForceOne, position=x=20, y=25, type=AIRPORT
+Aircraft id=airForceTwo, position=x=50, y=50, type=SKY
+Helicopter id=helicopter1, position=x=20, y=25, type=AIRPORT
+Helicopter id=helicopter2, position=x=20, y=25, type=AIRPORT
+Seaplane id=seaplane1, position=x=30, y=35, type=HARBOUR
+Seaplane id=seaplane2, position=x=30, y=35, type=HARBOUR

@@ -75,7 +75,7 @@ public class PropertyController {
 	}
 	
 	@PostMapping("/printByLocomotion")
-	public void printFlying(@RequestParam String locomotion){
+	public void printFlying(@RequestParam String locomotion) throws IOException{
 		propertyService.printItemsByLocomotion(Locomotion.valueOfLabel(locomotion.toLowerCase()));
 	}
 	

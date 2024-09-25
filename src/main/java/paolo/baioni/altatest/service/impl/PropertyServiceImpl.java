@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import paolo.baioni.altatest.model.animal.AbstractAnimal;
 import paolo.baioni.altatest.model.animal.Dog;
 import paolo.baioni.altatest.model.animal.Duck;
 import paolo.baioni.altatest.model.animal.Eagle;
@@ -114,31 +115,60 @@ public class PropertyServiceImpl implements PropertyService {
 	@Override
 	public void printHangarVehiclesToConsole() {
 		System.out.println();
-		System.out.println(listAllVehicles());
+		System.out.println(listHangarVehicles());
 		System.out.println();
 	}
 
 	@Override
 	public void printHangarVehiclesToFile(String fileName) throws IOException {
 		FileWriter hangarVehicles = new FileWriter("output/"+fileName+".txt");
-		hangarVehicles.write(listAllVehicles());
+		hangarVehicles.write(listHangarVehicles());
 		hangarVehicles.close();
 
 	}
 	
-	private String listAllVehicles() {
-		Collection<AbstractVehicle> allVehicles = hangar.getAllVehicles();
-		StringBuilder sb = new StringBuilder("Here follows the list of all hangar vehicles:\n");
-		for (AbstractVehicle vehicle : allVehicles) {
+	private String listHangarVehicles() {
+		Collection<AbstractVehicle> vehicles = hangar.getAllVehicles();
+		StringBuilder sb = new StringBuilder("Here follows the list of all hangar vehicles:\n\n");
+		sb.append(listVehicles(vehicles));
+		return sb.toString();
+	}
+
+	@Override
+	public void printItemsByLocomotion(Locomotion locomotion) throws IOException {
+		Collection<AbstractVehicle> locomotionVehicles = hangar.getAllVehicles().stream().
+				filter(v -> v.getLocomotions().contains(locomotion)).toList();
+		String vehicleList = listVehicles(locomotionVehicles);
+		
+		Collection<AbstractAnimal> locomotionAnimals = farm.getAllAnimals().stream().
+				filter(a -> a.getLocomotions().contains(locomotion)).toList();
+		StringBuilder sb = new StringBuilder("Here follows the list of animals and vehicles capable of "+
+				locomotion.getLabel()+" locomotion:\n\n");
+		sb.append(listAnimals(locomotionAnimals));
+		sb.append("\n");
+		sb.append(listVehicles(locomotionVehicles));
+		FileWriter hangarVehicles = new FileWriter("output/"+locomotion.getLabel()+".txt");
+		hangarVehicles.write(sb.toString());
+		hangarVehicles.close();
+		
+	}
+	
+	private String listVehicles(Collection<AbstractVehicle> vehicles) {
+		StringBuilder sb = new StringBuilder();
+		for (AbstractVehicle vehicle : vehicles) {
 			sb.append(vehicle.toString());
 			sb.append("\n");
 		}
 		return sb.toString();
 	}
-
-	@Override
-	public void printItemsByLocomotion(Locomotion locomotion) {
-		// TODO Auto-generated method stub
+	
+	private String listAnimals(Collection<AbstractAnimal> animals) {
+		StringBuilder sb = new StringBuilder();
+		for (AbstractAnimal animal : animals) {
+			sb.append(animal.toString());
+			sb.append("\n");
+		}
+		return sb.toString();
 	}
 
 	@Override

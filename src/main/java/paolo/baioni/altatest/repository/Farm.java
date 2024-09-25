@@ -30,4 +30,8 @@ public class Farm {
 			}
 		return rval;
 	}
+	
+	public Collection<AbstractAnimal> getAllAnimals(){
+		return this.animals;
+	}
 }

@@ -1,0 +1,11 @@
+Here follows the list of animals and vehicles capable of on_ground locomotion:
+
+Dog
+Dog
+Duck
+Duck
+
+Motorbike id=motorbike1, position=x=40, y=45, type=GARAGE
+Motorbike id=motorbike2, position=x=40, y=45, type=GARAGE
+Car id=car1, position=x=50, y=50, type=GROUND
+Car id=car2, position=x=40, y=45, type=GARAGE

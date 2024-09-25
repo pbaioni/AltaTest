@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import paolo.baioni.altatest.AltaTestApplication;
+import paolo.baioni.altatest.model.locomotion.Locomotion;
 import paolo.baioni.altatest.model.locomotion.Point;
 import paolo.baioni.altatest.model.locomotion.PointType;
 import paolo.baioni.altatest.model.vehicle.VehicleType;
@@ -62,6 +63,13 @@ public class PropertyTest {
 	@Test
 	public void testPrintAllVehiclesToFile() throws IOException {
 		propertyService.printHangarVehiclesToFile("allVehicles");
+	}
+	
+	@Test
+	public void testPrintItemByLocomotion() throws IOException {
+		propertyService.printItemsByLocomotion(Locomotion.NAVIGATE);
+		propertyService.printItemsByLocomotion(Locomotion.FLY);
+		propertyService.printItemsByLocomotion(Locomotion.ON_GROUND);
 	}
 	
 	@Test

@@ -1,4 +1,5 @@
 Here follows the list of all hangar vehicles:
+
 Aircraft id=airForceOne, position=x=20, y=25, type=AIRPORT
 Aircraft id=airForceTwo, position=x=50, y=50, type=SKY
 Helicopter id=helicopter1, position=x=20, y=25, type=AIRPORT

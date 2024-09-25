@@ -21,7 +21,7 @@ public interface PropertyService {
 	public void printHangarVehiclesToConsole();
 	public void printHangarVehiclesToFile(String fileName) throws IOException;
 	
-	public void printItemsByLocomotion(Locomotion locomotion);
+	public void printItemsByLocomotion(Locomotion locomotion) throws IOException;
 	
 	public Point move(String id, Point destination) throws WrongDestinationException;
 
