@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-import paolo.baioni.altatest.model.locomotion.Navigant;
-import paolo.baioni.altatest.model.locomotion.Roulant;
-import paolo.baioni.altatest.model.locomotion.Volant;
 import paolo.baioni.altatest.model.vehicle.Vehicule;
 
 public class Hangar {
