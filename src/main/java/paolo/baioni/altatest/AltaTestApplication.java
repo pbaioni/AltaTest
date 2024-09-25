@@ -8,7 +8,6 @@ public class AltaTestApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AltaTestApplication.class, args);
-		System.out.println("start");
 	}
 
 }

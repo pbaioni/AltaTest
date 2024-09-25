@@ -11,6 +11,7 @@ public class PropertyController {
 	
 	public PropertyController(PropertyService propertyService) {
 		this.propertyService = propertyService;
-		System.out.println("Controller instanciated");
+		System.out.println(String.format("You cannot move a %s to a %s point",
+                "jetski", "ground"));
 	}
 }

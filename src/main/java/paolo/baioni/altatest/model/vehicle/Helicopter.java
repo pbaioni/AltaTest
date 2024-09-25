@@ -1,11 +1,16 @@
 package paolo.baioni.altatest.model.vehicle;
 
-import paolo.baioni.altatest.model.property.Volant;
+import java.util.Arrays;
 
-public class Helicopter extends AbstractVehicule implements Volant {
+import paolo.baioni.altatest.model.locomotion.Locomotion;
+import paolo.baioni.altatest.model.locomotion.Point;
+import paolo.baioni.altatest.model.locomotion.PointType;
 
-	@Override
-	public void vole(Point origine, Point destination) {
-		seDeplace(origine, destination);
+public class Helicopter extends AbstractVehicle  {
+
+	public Helicopter(String id, Point position) {
+		super(id, position);
+		this.locomotions.add(Locomotion.FLY);
+		this.acceptableDestinations.addAll(Arrays.asList(PointType.AIRPORT, PointType.GROUND, PointType.SKY));
 	}
 }
