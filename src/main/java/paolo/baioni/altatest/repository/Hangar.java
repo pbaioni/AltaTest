@@ -2,6 +2,7 @@ package paolo.baioni.altatest.repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -76,5 +77,14 @@ public class Hangar {
 		rval.addAll(harbourVehicles);
 		rval.addAll(garageVehicles);
 		return rval;
+	}
+	
+	public Optional<AbstractVehicle> getVehicleById(String id) {
+		for(AbstractVehicle vehicle : getAllVehicles()) {
+			if(vehicle.getId().equals(id)) {
+				return Optional.of(vehicle);
+			}
+		}
+		return Optional.empty();
 	}
 }

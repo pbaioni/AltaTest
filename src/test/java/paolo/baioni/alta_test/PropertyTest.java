@@ -1,10 +1,8 @@
 package paolo.baioni.alta_test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -15,9 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import paolo.baioni.altatest.AltaTestApplication;
+import paolo.baioni.altatest.model.locomotion.Point;
+import paolo.baioni.altatest.model.locomotion.PointType;
 import paolo.baioni.altatest.model.vehicle.VehicleType;
 import paolo.baioni.altatest.service.PropertyService;
 import paolo.baioni.altatest.service.exception.DuplicateIdException;
+import paolo.baioni.altatest.service.exception.WrongDestinationException;
 
 
 @SpringBootTest(classes = AltaTestApplication.class)
@@ -95,4 +96,14 @@ public class PropertyTest {
 
 	}
 	
+	@Test
+	public void testMove() throws WrongDestinationException{
+		Point waterDestination = new Point(PointType.WATER, 50, 50);
+		Point skyDestination = new Point(PointType.SKY, 50, 50);
+		Point groundDestination = new Point(PointType.GROUND, 50, 50);
+		assertTrue(propertyService.move("jetski1", waterDestination).equals(waterDestination));
+		assertTrue(propertyService.move("airForceTwo", skyDestination).equals(skyDestination));
+		assertTrue(propertyService.move("car1", groundDestination).equals(groundDestination));
+		assertThrows(WrongDestinationException.class, () -> propertyService.move("car1", skyDestination));
+	}
 }

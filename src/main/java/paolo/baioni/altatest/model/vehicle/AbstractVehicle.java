@@ -29,7 +29,7 @@ public abstract class AbstractVehicle {
 			this.position = destination;
 			return destination;
 		}else {
-			throw new WrongDestinationException(this.getClass().getName(), destination.getPointType().name());
+			throw new WrongDestinationException(this.getClass().getSimpleName(), destination.getPointType().name());
 		}
 	}
 

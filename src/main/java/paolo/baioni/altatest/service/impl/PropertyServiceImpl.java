@@ -3,6 +3,7 @@ package paolo.baioni.altatest.service.impl;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -142,8 +143,11 @@ public class PropertyServiceImpl implements PropertyService {
 
 	@Override
 	public Point move(String id, Point destination) throws WrongDestinationException {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<AbstractVehicle> optionalVehicleToMove = hangar.getVehicleById(id);
+		if(optionalVehicleToMove.isPresent()) {
+			optionalVehicleToMove.get().move(destination);
+		}
+		return destination;
 	}
 
 }
