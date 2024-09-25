@@ -23,7 +23,10 @@ public class Point {
 		return pointType;
 	}
 
-	public String toString () {
-		return "(" + x + "," + y + ")";
+	@Override
+	public String toString() {
+		return "x=" + x + ", y=" + y + ", type=" + pointType;
 	}
+
+
 }

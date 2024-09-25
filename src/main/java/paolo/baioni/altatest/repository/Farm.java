@@ -24,7 +24,7 @@ public class Farm {
 
 	public boolean removeAnimalByClassName(String className) {
 		boolean rval = false;
-			Optional<AbstractAnimal> optionalAnimalToRemove = animals.stream().filter(a -> a.getClass().getName().equals(className)).findFirst();
+			Optional<AbstractAnimal> optionalAnimalToRemove = animals.stream().filter(a -> a.getClass().getSimpleName().toLowerCase().equals(className.toLowerCase())).findFirst();
 			if(optionalAnimalToRemove.isPresent()) {
 				rval =  animals.remove(optionalAnimalToRemove.get());
 			}

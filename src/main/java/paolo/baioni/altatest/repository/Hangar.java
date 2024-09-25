@@ -41,4 +41,24 @@ public class Hangar {
 		}
 		return rval;
 	}
+
+	public Collection<AbstractVehicle> getAirportVehicles() {
+		return airportVehicles;
+	}
+
+	public Collection<AbstractVehicle> getHarbourVehicles() {
+		return harbourVehicles;
+	}
+
+	public Collection<AbstractVehicle> getGarageVehicles() {
+		return garageVehicles;
+	}
+
+	public Collection<AbstractVehicle> getAllVehicles() {
+		Collection<AbstractVehicle> rval = new ArrayList<AbstractVehicle>();
+		rval.addAll(airportVehicles);
+		rval.addAll(harbourVehicles);
+		rval.addAll(garageVehicles);
+		return rval;
+	}
 }

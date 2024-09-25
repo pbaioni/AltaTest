@@ -41,4 +41,10 @@ public abstract class AbstractVehicle {
 		return locomotions;
 	}
 
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName() + " id=" + id + ", position=" + position.toString();
+	}
+
+
 }
